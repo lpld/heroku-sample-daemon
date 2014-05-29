@@ -1,1 +1,1 @@
-worker: java -cp target/classes com.github.lpld.heroku.Worker
+worker: java -cp target/classes:"target/dependency/*" com.github.lpld.heroku.DaemonRunner
