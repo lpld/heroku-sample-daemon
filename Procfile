@@ -1,0 +1,1 @@
+worker: java -cp target/classes com.github.lpld.heroku.Worker
