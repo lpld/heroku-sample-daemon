@@ -14,8 +14,14 @@ public class DbWriter {
     private final String user;
     private final String pass;
 
-    public DbWriter(String urlWithCredentials) throws URISyntaxException {
-        URI dbUri = new URI(urlWithCredentials);
+    public DbWriter(String urlWithCredentials) {
+        URI dbUri;
+        try {
+            dbUri = new URI(urlWithCredentials);
+        } catch (URISyntaxException ex) {
+            throw new RuntimeException(ex);
+        }
+
         String[] userInfo = dbUri.getUserInfo().split(":");
         this.user = userInfo[0];
         this.pass = userInfo[1];
