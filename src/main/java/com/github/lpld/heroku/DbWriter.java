@@ -13,9 +13,10 @@ public class DbWriter {
     public DbWriter(String urlWithCredentials) {
         this.urlWithCredentials = urlWithCredentials;
         try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException ex) {
-            throw new RuntimeException();
+            DriverManager.registerDriver((Driver) Class.forName("org.postgresql.Driver").newInstance());
+
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+            throw new RuntimeException(ex);
         }
     }
 
