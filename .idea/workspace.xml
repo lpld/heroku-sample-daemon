@@ -189,7 +189,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -260,6 +259,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -519,7 +519,7 @@
       <updated>1401394927351</updated>
       <workItem from="1401394930152" duration="2107000" />
       <workItem from="1401401210805" duration="890000" />
-      <workItem from="1401402134816" duration="5227000" />
+      <workItem from="1401402134816" duration="5340000" />
     </task>
     <task id="LOCAL-00001" summary="removing project files">
       <created>1401400557632</created>
@@ -545,11 +545,15 @@
       <created>1401481234631</created>
       <updated>1401481234632</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="removing project files">
+      <created>1401481856482</created>
+      <updated>1401481856482</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8224000" />
+    <option name="totallyTimeSpent" value="8337000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="-3" width="1370" height="748" extended-state="6" />
@@ -598,13 +602,13 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="removing project files" />
     <MESSAGE value="writing results to database" />
     <MESSAGE value="using getenv vs getProperty" />
     <MESSAGE value="registering driver" />
     <MESSAGE value="parsing URL in correct way" />
     <MESSAGE value="fixing compilation" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing compilation" />
+    <MESSAGE value="removing project files" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing project files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
