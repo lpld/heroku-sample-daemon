@@ -10,13 +10,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class DaemonRunner {
     public static void main(String[] args) {
-        final Runnable runnable = new Worker();
+        final Runnable worker = new Worker();
         final ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1);
+
 
         new Runnable() {
             @Override
             public void run() {
-                runnable.run();
+                worker.run();
                 executorService.schedule(this, 10, TimeUnit.SECONDS);
             }
         }.run();

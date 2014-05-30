@@ -14,6 +14,8 @@ import java.util.Scanner;
  * @since 5/30/14
  */
 public class Worker implements Runnable {
+    private final DbWriter dbWriter = new DbWriter(System.getProperty("DATABASE_URL"));
+
     @Override
     public void run() {
         HttpClient client = HttpClientBuilder.create().build();
@@ -33,7 +35,10 @@ public class Worker implements Runnable {
 
         // printing first line
         if (scanner.hasNextLine()) {
-            System.out.println(" --- Content: " + scanner.nextLine());
+            String content = scanner.nextLine();
+
+            dbWriter.writeContent(content);
+            System.out.println(" --- Content: " + content);
         } else {
             System.out.println(" --- Empty content");
         }
