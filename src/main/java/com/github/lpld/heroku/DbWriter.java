@@ -1,5 +1,7 @@
 package com.github.lpld.heroku;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.*;
 
 /**
@@ -8,20 +10,28 @@ import java.sql.*;
  */
 public class DbWriter {
 
-    private final String urlWithCredentials;
+    private final String url;
+    private final String user;
+    private final String pass;
 
-    public DbWriter(String urlWithCredentials) {
-        this.urlWithCredentials = urlWithCredentials;
+    public DbWriter(String urlWithCredentials) throws URISyntaxException {
+        URI dbUri = new URI(urlWithCredentials);
+        String[] userInfo = dbUri.getUserInfo().split(":");
+        this.user = userInfo[0];
+        this.pass = userInfo[1];
+
+        this.url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
         try {
-            DriverManager.registerDriver((Driver) Class.forName("org.postgresql.Driver").newInstance());
+            Class.forName("org.postgresql.Driver");
 
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+        } catch (ClassNotFoundException ex) {
             throw new RuntimeException(ex);
         }
     }
 
     public void writeContent(String content) {
-        try (Connection conn = DriverManager.getConnection(urlWithCredentials)) {
+        try (Connection conn = DriverManager.getConnection(url, user, pass)) {
             PreparedStatement statement = conn.prepareStatement("insert into sample_table (content, datetime) values (?, ?)");
 
             statement.setString(1, content);
