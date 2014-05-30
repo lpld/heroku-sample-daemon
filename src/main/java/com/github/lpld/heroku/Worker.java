@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @since 5/30/14
  */
 public class Worker implements Runnable {
-    private final DbWriter dbWriter = new DbWriter(System.getProperty("DATABASE_URL"));
+    private final DbWriter dbWriter = new DbWriter(System.getenv("DATABASE_URL"));
 
     @Override
     public void run() {
